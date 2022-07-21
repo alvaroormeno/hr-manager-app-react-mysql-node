@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 .information {
@@ -9,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 .information input {
@@ -16,5 +18,14 @@
   height: 50px;
   font-size: 18px;
   padding-left: 10px;
+}
+
+.information button {
+  width: 320px;
+  height: 50px
+}
+
+.information button:hover {
+  cursor: pointer;
 }
 
