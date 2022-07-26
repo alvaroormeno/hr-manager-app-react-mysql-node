@@ -4,6 +4,11 @@ const express = require('express')
 // Step 2 - create app from that instance
 const app = express()
 
+const cors = require('cors')
+
+app.use(cors())
+app.use(express.json())
+
 
 // set up mysql
 // STEP 1 - import mysql
@@ -12,7 +17,7 @@ const mysql = require('mysql')
 const db = mysql.createConnection({
     user: 'root',
     host: "localhost",
-    password: 'Mysqlpass',
+    password: 'Mysqlrootpass',
     database: "HRapp",
 
     
@@ -35,10 +40,19 @@ app.post("/create", (req, res) => {
         }
     }
     )
+})
 
+app.get('/employees', (req, res) => {
+    db.query("SELECT * FROM employees", (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result)
+        } 
+    })
 })
 
 // Step 3 (express) - start app by listening to port
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log("server is running on port 3001!")
 })
